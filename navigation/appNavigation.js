@@ -5,8 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, View, Image } from 'react-native'; // Import Image component
 import HomeScreen from '../screens/Home';
-import SearchScreen from '../screens/Search'; 
-import BookingScreen from '../screens/Booking'; 
+import TasksScreen from '../screens/Tasks'; 
+import NoticeScreen from '../screens/Notice'; 
 import ProfileScreen from '../screens/Profile'; 
 import FirstScreen from '../screens/FirstPage';
 import LoginScreen from '../screens/Login'; 
@@ -14,6 +14,8 @@ import SignUpScreen from '../screens/Signup';
 import VerificationScreen from '../screens/Verification'; 
 import InfoScreen from '../screens/InfoPage'; 
 import EditProfileScreen from '../screens/EditProfile';
+import ChangePasswordScreen from '../screens/ChangePassword';
+import ChangePasswordFinalScreen from '../screens/ChangePasswordFinal';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -54,31 +56,31 @@ const MainTab = () => (
       }}
     />
     <Tab.Screen
-      name="Search"
-      component={SearchScreen}
+      name="Tasks"
+      component={TasksScreen}
       options={{
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>
             <Image 
-              source={require('../assets/icons/Type=Search.png')} // Update with your image path
+              source={require('../assets/icons/task-list.png')} // Update with your image path
               style={{ width: 25, height: 25, tintColor: focused ? '#007AFF' : '#A1A1A1' }} 
             />
-            <Text style={{ color: focused ? '#007AFF' : '#A1A1A1' }}>Search</Text>
+            <Text style={{ color: focused ? '#007AFF' : '#A1A1A1' }}>Tasks</Text>
           </View>
         ),
       }}
     />
     <Tab.Screen
-      name="Booking"
-      component={BookingScreen}
+      name="Notice"
+      component={NoticeScreen}
       options={{
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>
             <Image 
-              source={require('../assets/icons/Type=Calendar.png')} // Update with your image path
+              source={require('../assets/icons/notification.png')} // Update with your image path
               style={{ width: 25, height: 25, tintColor: focused ? '#007AFF' : '#A1A1A1' }} 
             />
-            <Text style={{ color: focused ? '#007AFF' : '#A1A1A1' }}>Booking</Text>
+            <Text style={{ color: focused ? '#007AFF' : '#A1A1A1' }}>Notice</Text>
           </View>
         ),
       }}
@@ -112,6 +114,8 @@ export default function AppNavigation() {
         <Stack.Screen name="InfoPage" component={InfoScreen} />
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+        <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+        <Stack.Screen name="ChangePasswordFinal" component={ChangePasswordFinalScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -8,7 +8,7 @@ const LoginScreen = ({ navigation }) => {
   const [passwordVisible, setPasswordVisible] = useState(true); // For Password visibility
 
   const handleLogin = () => {
-  const validMobileNumber = '+639566776559';
+  const validMobileNumber = '+63';
   const validPassword = 'koypogi01';
 
   if (mobileNumber === validMobileNumber && password === validPassword) {

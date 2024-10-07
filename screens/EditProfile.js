@@ -33,47 +33,83 @@ const EditProfileScreen = ({ navigation }) => {
             </View>
             <View style={styles.pictureContainer}>
                 <Image
-                    source={require('../assets/Profile Picture.png')} // Placeholder for profile image
+                    source={require('../assets/johnny.png')} // Placeholder for profile image
                     style={styles.profileImage}
                 />
                 <View style={styles.cameraBackground}>
                     <Image
-                        source={require('../assets/icons/camera.png')} 
+                        source={require('../assets/icons/camera.png')}
                         style={styles.cameraIcon}
                     />
                 </View>
             </View>
             <View style={styles.InputContainer}>
-                <Text style={styles.label}>Name</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Name"
-                    value='IShowSpeed'
-                />
-                <Text style={styles.label}>Email ID</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    keyboardType="email-address" 
-                    value='ishowspeed@gmail.com'
-                />
-                <Text style={styles.label}>Mobile Number</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Mobile Number"
-                    keyboardType="phone-pad" 
-                    value='+69124562345'
-                />
-                <Text style={styles.label}>Bio</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Bio"
-                    multiline 
-                    value='-------------------------------'
-                />
-                <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
-                    <Text style={styles.saveButtonText}>Save</Text>
-                </TouchableOpacity>
+                {/* Full Name */}
+                <View style={styles.fieldContainer}>
+                    <View style={styles.textField}>
+                        <Text style={styles.label}>Full Name</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Name"
+                            value="Ricarte Genese Naraja"
+                        />
+                    </View>
+                    <Image
+                        source={require('../assets/icons/edit.png')} // Edit icon
+                        style={styles.editIcon}
+                    />
+                </View>
+
+                {/* Username */}
+                <View style={styles.fieldContainer}>
+                    <View style={styles.textField}>
+                        <Text style={styles.label}>Username</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Email"
+                            keyboardType="email-address"
+                            value="@ricarte69"
+                        />
+                    </View>
+                    <Image
+                        source={require('../assets/icons/edit.png')} // Edit icon
+                        style={styles.editIcon}
+                    />
+                </View>
+
+                {/* Business Name */}
+                <View style={styles.fieldContainer}>
+                    <View style={styles.textField}>
+                        <Text style={styles.label}>Business Name</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder=""
+                            multiline
+                            value=""
+                        />
+                    </View>
+                    <Image
+                        source={require('../assets/icons/edit.png')} // Edit icon
+                        style={styles.editIcon}
+                    />
+                </View>
+
+                {/* Mobile Number */}
+                <View style={styles.fieldContainer}>
+                    <View style={styles.textField}>
+                        <Text style={styles.label}>Mobile Number</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Mobile Number"
+                            keyboardType="phone-pad"
+                            value="+691 2456 2345"
+                        />
+                    </View>
+                    <Image
+                        source={require('../assets/icons/edit.png')} // Edit icon
+                        style={styles.editIcon}
+                    />
+                </View>
             </View>
 
         </View>
@@ -106,18 +142,15 @@ const styles = StyleSheet.create({
     appBar: {
         flexDirection: 'row',
         alignItems: 'flex-start',
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
         paddingHorizontal: 20,
         paddingTop: 10
     },
-    label: {
-        fontSize: 16,
-        color: '#333',
-    },
+
     pictureContainer: {
         alignItems: 'center',
         paddingVertical: 60,
-        position: 'relative', 
+        position: 'relative',
     },
     profileImage: {
         width: 100,
@@ -140,36 +173,38 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
     },
+    InputContainer: {
+        marginVertical: 20, // Adds some spacing between fields
+    },
+    fieldContainer: {
+        flexDirection: 'row', // Align the text and icon in a row
+        alignItems: 'center',
+        borderWidth: 1, // Border for the entire field
+        borderColor: '#DDD', // Border color
+        borderRadius: 10, // Rounded corners
+        paddingHorizontal: 10, // Padding inside the box
+        paddingVertical: 5,
+        marginBottom: 15, // Space between input fields
+    },
+    textField: {
+        flex: 1, // Take all the remaining space
+    },
     label: {
         fontSize: 14,
         color: '#888',
         marginBottom: 5,
     },
-
-    InputContainer: {
-        padding: 10
-    },
-
     input: {
-        padding: 10,
-        borderRadius: 10,
-        marginBottom: 15,
-        // backgroundColor: '#f9f9f9', 
-        fontSize: 15,
-        fontWeight: 'bold',
+        fontSize: 16, // Adjust font size for input
+        color: '#333',
+        paddingVertical: 5, // Padding to make input text visually balanced
     },
-    saveButton: {
-        backgroundColor: '#3399FF',
-        padding: 15,
-        borderRadius: 15,
-        alignItems: 'center',
-        marginBottom: 10,
+    editIcon: {
+        width: 15, // Size of the edit icon
+        height: 15, // Size of the edit icon
+        tintColor: 'grey', // Optional: Apply color to the icon
     },
-    saveButtonText: {
-        color: '#fff',
-        fontSize: 16,
 
-    },
 });
 
 export default EditProfileScreen;

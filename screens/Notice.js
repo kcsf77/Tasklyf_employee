@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Booking = () => {
+const Notice = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Booking Page</Text>
+            <Text style={styles.text}>Notice Page</Text>
         </View>
     );
 };
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Booking;
+export default Notice;

@@ -17,35 +17,34 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Image 
-          source={require('../assets/Profile Picture.png')} // Placeholder for profile image
-          style={styles.profileImage} 
+        <Image
+          source={require('../assets/johnny.png')} // Placeholder for profile image
+          style={styles.profileImage}
         />
-        <Text style={styles.profileName}>IShowSpeed</Text>
-        <Text style={styles.profileEmail}>ishowspeed@gmail.com</Text>
+        <Text style={styles.profileName}>Ricarte Naraja</Text>
+        <Text style={styles.profileEmail}>@ricarte9</Text>
         <TouchableOpacity style={styles.editProfileButton} onPress={() => navigation.navigate('EditProfile')}>
           <Text style={styles.editProfileText}>Edit Profile</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.menu}>
-        <Text style={styles.menuTitle}>Profile</Text>
-
         {menuItems.map((item, index) => (
-          <TouchableOpacity 
-            key={index} 
+          <TouchableOpacity
+            key={index}
             style={styles.menuItem}
-            onPress={() => item.title === 'Logout' && handleLogout()} // Trigger logout when clicked
+            onPress={() => item.title === 'Logout' && handleLogout() || item.title === 'Change Password' && navigation.navigate('ChangePassword')} // Trigger logout when clicked
           >
-            <Image 
-              source={item.icon } 
-              style={styles.menuIcon}
-            />
+
             <Text style={styles.menuText}>{item.title}</Text>
-            <Image 
-              source={require('../assets/icons/next.png')} 
-              style={styles.menuArrow}
-            />
+            {item.title === 'Account' ? (
+              <Text style={styles.accountText}>ricartenaraja@gmail.com</Text> // Show "Edit" text when the title is 'Account'
+            ) : (
+              <Image
+                source={require('../assets/icons/next.png')} // Use the next icon for other items
+                style={styles.menuArrow}
+              />
+            )}
           </TouchableOpacity>
         ))}
       </View>
@@ -68,7 +67,7 @@ const ProfileScreen = ({ navigation }) => {
             <View style={styles.modalButtons}>
               <Pressable style={styles.modalButtonYes} onPress={confirmLogout}>
                 <Text style={styles.modalButtonTextYes}>Yes</Text>
-              </Pressable>  
+              </Pressable>
               <Pressable style={styles.modalButtonNo} onPress={() => setLogoutModalVisible(false)}>
                 <Text style={styles.modalButtonTextNo}>No</Text>
               </Pressable>
@@ -82,14 +81,13 @@ const ProfileScreen = ({ navigation }) => {
 
 // Array with different images for each item
 const menuItems = [
-  { title: 'Register as Partner', icon: require('../assets/icons/deal.png') },
-  { title: 'My Booking', icon: require('../assets/icons/check.png') },
-  { title: 'Help Center', icon: require('../assets/icons/help.png') },
-  { title: 'Share & Earn', icon: require('../assets/icons/share_earn.png') },
-  { title: 'Rate us', icon: require('../assets/icons/rate.png') },
-  { title: 'FAQ’s', icon: require('../assets/icons/faqs.png') },
-  { title: 'Privacy Policy', icon: require('../assets/icons/insurance.png') },
-  { title: 'Logout', icon: require('../assets/icons/logout.png') }
+  { title: 'Account' },
+  { title: 'Change Password' },
+  { title: 'Help Center' },
+  { title: 'Rate us' },
+  { title: 'FAQ’s' },
+  { title: 'Privacy Policy' },
+  { title: 'Logout', }
 ];
 
 const styles = StyleSheet.create({
@@ -139,7 +137,7 @@ const styles = StyleSheet.create({
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
+    paddingVertical: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#f0f0f0',
   },
@@ -153,9 +151,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   menuArrow: {
-    width: 18, 
-    height: 18, 
-    marginLeft: 'auto', 
+    width: 18,
+    height: 18,
+    marginLeft: 'auto',
   },
   modalOverlay: {
     flex: 1,
