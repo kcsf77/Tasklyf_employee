@@ -16,6 +16,7 @@ import InfoScreen from '../screens/InfoPage';
 import EditProfileScreen from '../screens/EditProfile';
 import ChangePasswordScreen from '../screens/ChangePassword';
 import ChangePasswordFinalScreen from '../screens/ChangePasswordFinal';
+import ProInfoScreen from '../screens/ProInfoPage';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -116,6 +117,7 @@ export default function AppNavigation() {
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
         <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
         <Stack.Screen name="ChangePasswordFinal" component={ChangePasswordFinalScreen} />
+        <Stack.Screen name="ProInfo" component={ProInfoScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -5,33 +5,10 @@ import Icon from 'react-native-vector-icons/Ionicons'; // Import the icon librar
 const InfoScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [passwordVisible, setPasswordVisible] = useState(true); // For Password visibility
-    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(true); // For Confirm Password visibility
 
-    // Function to handle sign-up
-    const handleSignUp = () => {
-        // Check if all fields are filled
-        if (!firstName || !lastName || !password || !confirmPassword) {
-            Alert.alert('Error', 'Please fill in all fields.');
-            return;
-        }
 
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            Alert.alert('Error', 'Passwords do not match.');
-            return;
-        }
 
-        // Here you can add your sign-up logic (e.g., API call to register the user)
-        
-        // Show success message
-        Alert.alert('Success', 'Your account has been successfully created!');
 
-        // Navigate to Login screen upon successful sign-up
-        navigation.navigate('Login');
-    };
 
     return (
         <View style={styles.container}>
@@ -72,52 +49,46 @@ const InfoScreen = ({ navigation }) => {
                         </View>
                     </View>
 
-                    {/* Password Input with Eye Icon */}
-                    <Text style={styles.label}>Password</Text>
-                    <View style={styles.passwordContainer}>
+
+                    <Text style={styles.label}>Business Name</Text>
+                    <View style={styles.InputContainer}>
                         <TextInput
                             style={styles.input}
-                            placeholder="Password"
-                            secureTextEntry={passwordVisible}
-                            value={password}
-                            onChangeText={setPassword}
+                            placeholder="Business Name"
+
+
+
                         />
-                        <TouchableOpacity
-                            style={styles.eyeIcon}
-                            onPress={() => setPasswordVisible(!passwordVisible)}
-                        >
-                            <Icon
-                                name={passwordVisible ? 'eye-off-outline' : 'eye-outline'}
-                                size={24}
-                                color="#BFBFBF"
-                            />
-                        </TouchableOpacity>
+
                     </View>
 
-                    {/* Confirm Password Input with Eye Icon */}
-                    <Text style={styles.label}>Confirm Password</Text>
-                    <View style={styles.passwordContainer}>
+                    <Text style={styles.label}>Username</Text>
+                    <View style={styles.InputContainer}>
                         <TextInput
                             style={styles.input}
-                            placeholder="Confirm Password"
-                            secureTextEntry={confirmPasswordVisible}
-                            value={confirmPassword}
-                            onChangeText={setConfirmPassword}
+                            placeholder="Username"
+
+
+
                         />
-                        <TouchableOpacity
-                            style={styles.eyeIcon}
-                            onPress={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
-                        >
-                            <Icon
-                                name={confirmPasswordVisible ? 'eye-off-outline' : 'eye-outline'}
-                                size={24}
-                                color="#BFBFBF"
-                            />
-                        </TouchableOpacity>
+
                     </View>
 
-                    <TouchableOpacity style={styles.loginButton} onPress={handleSignUp}>
-                        <Text style={styles.loginButtonText}>Sign up</Text>
+                    <Text style={styles.label}>Mobile Number</Text>
+                    <View style={styles.InputContainer}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Mobile Number"
+                            keyboardType="phone-pad"
+
+                        />
+
+                    </View>
+
+
+
+                    <TouchableOpacity style={styles.nextButton}  onPress={() => navigation.navigate('ProInfo')}>
+                        <Text style={styles.nextButtonText}>Next</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -171,7 +142,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 15,
     },
-    
+
     nameContainer: {
         flexDirection: 'row', // Align inputs side by side
         justifyContent: 'space-between',
@@ -181,14 +152,14 @@ const styles = StyleSheet.create({
         flex: 1,
         marginRight: 5
     },
-    loginButton: {
+    nextButton: {
         backgroundColor: '#3399FF',
         padding: 15,
         borderRadius: 15,
         alignItems: 'center',
         marginBottom: 10,
     },
-    loginButtonText: {
+    nextButtonText: {
         color: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
@@ -200,15 +171,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    passwordContainer: {
+    InputContainer: {
         position: 'relative',
         marginBottom: 15,
     },
-    eyeIcon: {
-        position: 'absolute',
-        right: 15,
-        top: 7,
-    },
+
 });
 
 export default InfoScreen;
